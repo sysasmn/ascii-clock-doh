@@ -1,20 +1,16 @@
-
-
 #!/usr/bin/python3
 
-#testing printing numbers and removing with os.system("clear")
+#there is an issue with the top line of each number that should be fixed I think width needs to be standard
+#also put colons in for the 00:00:00 format
+
 import time
 import os
 import digits
 
 height = 16
-width = 25
-
-#create lines
-global lines
+width = 26
 
 def get_nth_line(digit, n):
-    #put error checks here on digit or n
 
     newlines = 0; 
     output = ""
@@ -32,7 +28,6 @@ def get_nth_line(digit, n):
 
 def reach_width(line):
     dif = width - len(line)
-    #print("len = ", len(line))
     if dif > 0:
         output = line + dif*" "
         return output
@@ -51,13 +46,6 @@ def nth_line_time(hour, minute, second, n):
 
     return reach_width(get_nth_line(tens_hour,n)) + reach_width(get_nth_line(units_hour,n)) + reach_width(get_nth_line(tens_min,n)) + reach_width(get_nth_line(units_min,n)) + reach_width(get_nth_line(tens_second,n)) + reach_width(get_nth_line(units_second,n))
 
-
-s = reach_width(get_nth_line(9,height))
-print(s)
-#time.sleep(5)
-for i in range (1,height+1):
-    print(nth_line_time(10,0,0,i))
-#time.sleep(10)
 while True:
     os.system("clear")
 
@@ -70,9 +58,5 @@ while True:
 
     for i in range (1,height+1):
         print(nth_line_time(hour,minute,second,i))    
-    #print(hour)
-    #print(minute)
-    #print(second)
-
     time.sleep(0.5)
 
